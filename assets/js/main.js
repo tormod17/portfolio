@@ -4,7 +4,18 @@ jQuery(document).ready(function($) {
     /*======= Skillset *=======*/
     
     $('.level-bar-inner').css('width', '0');
-    
+    var message =' Thank you for finding me';
+    var max = message.length;
+
+    function showText(target, message, index, interval){
+        if (index < message.length) {
+            $(target).append(message[index++]);
+            setTimeout(function () { showText(target, message, index, interval); }, interval);
+          }
+    }
+    showText("#findingMe", message ,0,100);
+
+
     $(window).on('load', function() {
 
         $('.level-bar-inner').each(function() {
@@ -59,9 +70,9 @@ jQuery(document).ready(function($) {
     
     
     /* Github Activity Feed - https://github.com/tormod17/github-activity */
-    GitHubActivity.feed({ username: "tormod17", 
-                          repository: "https://github.com/tormod17/github-activity",
-                          selector: "#ghfeed" });
+    GitHubActivity.feed({ username: "tormod17", selector: "#ghfeed" });
+
+
 
 
 });

@@ -128,8 +128,9 @@ iframe {
   margin-right: 30px;
 }
 .profile-image { 
-    border-radius: 200px;
-    height : 10em;
+    border-radius: 50%;
+    width : 150px;
+    height: 170px;
  }
 .header .profile-content .name {
   color: #49515a;
