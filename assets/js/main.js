@@ -70,9 +70,7 @@ jQuery(document).ready(function($) {
     
     
     /* Github Activity Feed - https://github.com/tormod17/github-activity */
-    GitHubActivity.feed({ username: "tormod17", 
-                          repository: "https://github.com/tormod17/github-activity",
-                          selector: "#ghfeed" });
+    GitHubActivity.feed({ username: "tormod17", selector: "#ghfeed" });
 
 
 
