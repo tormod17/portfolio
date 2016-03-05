@@ -7,13 +7,12 @@ jQuery(document).ready(function($) {
     var message =' Thank you for finding me';
     var max = message.length;
 
-    function showText(target, message, index, interval){
+    (function showText(target, message, index, interval){
         if (index < message.length) {
             $(target).append(message[index++]);
             setTimeout(function () { showText(target, message, index, interval); }, interval);
           }
-    }
-    showText("#findingMe", message ,0,100);
+    }("#findingMe", message ,0,100));
 
 
     $(window).on('load', function() {

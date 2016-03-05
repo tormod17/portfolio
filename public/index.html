@@ -52,7 +52,14 @@
                     <li class="last-item"><a href="#"><i class="fa fa-hacker-news"></i></a></li>                 
                 </ul> 
             </div><!--//profile-->
-            <a class="btn btn-cta-primary pull-right" href="mailto:tormodsmith@gmail.com" target="_blank"><i class="fa fa-paper-plane"></i>Contact Me </a> 
+            <ul class="list-inline pull-right">
+                <li><a class="btn btn-cta-primary pull-right" href="mailto:tormodsmith@gmail.com" target="_blank"><i class="fa fa-paper-plane"></i>Contact Me </a> </li>
+                <li><a class="btn btn-cta-primary pull-right" href="blog" target="_blank"><i class="fa fa-paper-plane"></i>Blog</a> 
+                </li>
+            </ul>
+           
+        
+
 
         </div><!--//container-->
     </header><!--//header-->
@@ -305,13 +312,23 @@
                 
                 <aside class="blog aside section">
                     <div class="section-inner">
-                        <h2 class="heading">Latest Blog Posts</h2>
+                        <h2 class="heading">{{title}}</h2>
+                        <ul class="list aside section">
+                           {{#each blogs}}
+                           <li>{{this.author}}</li>
+                           <li>{{this.date}}</li>
+                           <li>{{this.body}}</li>
+
+                           {{/each}}
+                        </ul>
+                        <h2 class="heading">Latest Blog Posts </h2>
                         <p>WORK IN PROGRESS <a href="https://github.com/sdepold/jquery-rss" target="_blank">jQuery RSS plugin</a> to pull in your blog post feeds.</p>
                         <div id="rss-feeds" class="content">
 
                         </div><!--//content-->
                     </div><!--//section-inner-->
                 </aside><!--//section-->
+
                 
                 <aside class="list music aside section">
                     <div class="section-inner">
