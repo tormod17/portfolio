@@ -7,22 +7,16 @@ client.on('connect', function() {
     console.log('connected to Redis');
 });
 
-const emptyCheck = (callback) =>{
-	client.dbsize(function(err,count) {
-		  	callback(); 
-	});
-};
-
 
 
 const addtoRedis = (obj) => {
 		
 		var postTitle = obj.title;
-		
+		obj.date = Date.now();
 		client.hmset(postTitle, {
 				'author': obj.author,
 				'body' :  obj.body,
-				'date': new Date(obj.date)
+				'date':   obj.date,
 				},function(error,reply){
 					(error) ? console.log('error adding hash') : console.log('success added to db')
 			  }
@@ -64,5 +58,5 @@ module.exports = {
 	addtoRedis : addtoRedis,
 	getsortedPosts :getsortedPosts,
 	getAllHashes:getAllHashes,
-	emptyCheck:emptyCheck
+	
 };

@@ -23,10 +23,10 @@ tinymce.init({
 
 (function () {
 	// Save date in date div, and display it in readable format
-	var date = Date.now();
+/*	var date = Date.now();
 	document.getElementById('date').value = date;
 	var display = document.getElementById('display');
-	display.innerHTML = '<b>Date:</b> ' + new Date(date).toString().substr(0, 15);
+	display.innerHTML = '<b>Date:</b> ' + new Date().toString().substr(0, 15);*/
 
 	// Display author's name in display div, capitalised, and put name in
 	// author input for form submission

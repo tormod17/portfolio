@@ -36,21 +36,18 @@ server.register(plugins,(err) => {
 				method:'GET',
 				path:'/',
 				handler:(request, reply) => {
-					  	  var obj={};
+					 
 						  
-						  redis.emptyCheck( function(count){
-						  		 if (count < 1) {
-	  							console.log('empty');
-	  							reply.view('index');
-	  							} else {
-	  							console.log('full');
-	  							}
-						  });
-                          
-                          redis.getAllHashes('sortedPosts',(postsArr) => {
+						   redis.getAllHashes('sortedPosts',(postsArr) => {
                           		if(err){ reply.view('index')}
+                          		var obj={};
+                          		postsArr.map( (obj) => {
+                          		 			obj.date=  new Date(obj.date);
+                          		            obj.body= obj.body.replace(/<(?:.|\n)*?>/gm, '');
+                          		});
+
                           		obj.blogs = postsArr;
-                          	
+                          		obj.title ='Work In Progress, Learning Blog'
                           		console.log(obj);
                           		reply.view('index', obj);
 
@@ -91,7 +88,9 @@ server.register(plugins,(err) => {
 					method :'GET',
 					path:'/blog',
 					handler:(request,reply) => {
-						reply.view('blog', {title:'Let\'s write'});
+						reply.view('blog', {	
+											title:'Let\'s write',
+																				});
 						}
 
 				},
