@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Blog</title>
+	<script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
+	<link rel="stylesheet" type="text/css" id="u0" href="https://cdn.tinymce.com/4/skins/lightgray/skin.min.css">
+
+</head>
+<body>
+
+
+
+<h1>Blog {{title}}</h1>
+<form method="post" id="form">
+    <input type="text" placeholder="Title" name="title" required>
+    <input type="text" placeholder="Author" name="author">
+    <textarea id="tiny" form="form" name="body">Hello World</textarea>
+    <button id='button'>SUBMIT</button>
+  </form>
+</body>
+<script src="./assets/js/blog.js" ></script>
+</html>
