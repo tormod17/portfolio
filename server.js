@@ -3,13 +3,14 @@
 const Hapi = require('hapi');
 const server = new Hapi.Server();
 const port = process.env.PORT || 3000;
-const env = require('env2')('config.env');
+
 const Inert = require('inert');
 const Path =require('path');
 const Vision = require('vision');
 const Handlebars = require('handlebars');
 
 const redis = require('./assets/js/redis.js');
+const env = require('env2')('config.env');
 
 server.connection({
 	port:port	
