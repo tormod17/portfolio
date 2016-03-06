@@ -1,14 +1,9 @@
-const env = require('env2')('./config.env');
+const env = require('env2')('config.env');
 var redis = require('redis');
-var client = redis.createClient();
 
-if (process.env.REDISCLOUD_URL) {
-	var redisCloud = require("url").parse(process.env.REDISCLOUD_URL);
-	var client = redis.createClient(process.env.REDISCLOUD_URL, {no_ready_check: true})
 
-} else {
-	var client = require("redis").createClient();
-}
+var client = redis.createClient(process.env.REDISCLOUD_URL)
+
 
 
 
