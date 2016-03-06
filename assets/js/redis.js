@@ -1,4 +1,4 @@
-const env = require('env2')('config.env');
+const env = require('env2')('./config.env');
 var redis = require('redis');
 var client = redis.createClient();
 
