@@ -1,9 +1,9 @@
-
+const env = require('env2')('config.env');
 var redis = require('redis');
 var client = redis.createClient();
 
-if (process.env.REDISTOGO_URL) {
-	var redisCloud = require("url").parse(process.env.REDISTOGO_URL);
+if (process.env.REDISCLOUD_URL) {
+	var redisCloud = require("url").parse(process.env.REDISCLOUD_URL);
 	var client = require("redis").createClient(redisCloud.port, redisCloud.hostname);
 	client.auth(rtg.auth.split(":")[1]);
 } else {
