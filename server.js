@@ -9,7 +9,7 @@ const Path =require('path');
 const Vision = require('vision');
 const Handlebars = require('handlebars');
 
-const redis = require('./assets/js/redis.js');
+const redis = require('./lib/redis.js');
 
 
 server.connection({
@@ -40,18 +40,21 @@ server.register(plugins,(err) => {
 					 
 						  
 						   redis.getAllHashes('sortedPosts',(postsArr) => {
-                          		if(err){ reply.view('index')}
-                          		var obj={};
-                          		postsArr.map( (obj) => {
-                          		 			obj.date=  new Date(obj.date);
-                          		            obj.body= obj.body.replace(/<(?:.|\n)*?>/gm, '');
-                          		});
+                          	   		console.log('GAH', postsArr.length);
+	                          	    var obj={};
+	                          		postsArr.map( (obj) => {
+	                          		 			obj.date=  new Date(obj.date);
+	                          		            obj.body= obj.body.replace(/<(?:.|\n)*?>/gm, '');
+	                          		});
 
-                          		obj.blogs = postsArr;
-                          		obj.title ='Work In Progress, Learning Blog'
-                          		console.log(obj);
-                          		reply.view('index', obj);
+		                          		obj.blogs = postsArr;
+		                          		obj.title ='Work In Progress, Learning Blog'
+	                          	    reply.view('index', obj);
 
+                          	                          	    	
+                          	    
+
+	                        
 						  });
                       		
                     		
