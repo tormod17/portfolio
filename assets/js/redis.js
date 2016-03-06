@@ -1,8 +1,8 @@
-var env = require('env2')('config.env');
+
 var redis = require('redis');
 
-
-var client = redis.createClient(process.env.REDIS_URL)
+var redis_url= 'redis://h:pafjtkoeklr38bcm4781me01b05@ec2-54-217-206-114.eu-west-1.compute.amazonaws.com:12489';
+var client = redis.createClient( redis_url);
 
 
 

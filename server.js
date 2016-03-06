@@ -10,7 +10,7 @@ const Vision = require('vision');
 const Handlebars = require('handlebars');
 
 const redis = require('./assets/js/redis.js');
-const env = require('env2')('config.env');
+
 
 server.connection({
 	port:port	
