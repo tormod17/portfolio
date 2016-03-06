@@ -2,6 +2,16 @@
 var redis = require('redis');
 var client = redis.createClient();
 
+if (process.env.REDISTOGO_URL) {
+	var redisCloud = require("url").parse(process.env.REDISTOGO_URL);
+	var client = require("redis").createClient(redisCloud.port, redisCloud.hostname);
+	client.auth(rtg.auth.split(":")[1]);
+} else {
+	var client = require("redis").createClient();
+}
+
+
+
 
 client.on('connect', function() {
     console.log('connected to Redis');
