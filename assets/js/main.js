@@ -32,6 +32,8 @@ jQuery(document).ready(function($) {
     /* Bootstrap Tooltip for Skillset */
     $('.level-label').tooltip();
     
+    /*Replace &amp;nbsp; with a new paragraph */
+
     
     /* jQuery RSS - https://github.com/sdepold/jquery-rss */
     

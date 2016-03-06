@@ -42,8 +42,8 @@ server.register(plugins,(err) => {
 						   redis.getAllHashes('sortedPosts',(postsArr) => {
                           	   		console.log('GAH', postsArr.length);
 	                          	    var allBlogs={};
-	                          		postsArr.map( (obj) => {
-	                          		 	obj.body= obj.body.replace(/<(?:.|\n)*?>/gm, '');
+	                          		postsArr.reverse().map( (obj) => {
+	                          		 	obj.body= obj.body;
 	                          		 	var timeNdate =  new Date(Number(obj.date));
 	                          		 	obj.date = timeNdate;
 
