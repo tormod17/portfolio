@@ -41,15 +41,17 @@ server.register(plugins,(err) => {
 						  
 						   redis.getAllHashes('sortedPosts',(postsArr) => {
                           	   		console.log('GAH', postsArr.length);
-	                          	    var obj={};
+	                          	    var allBlogs={};
 	                          		postsArr.map( (obj) => {
-	                          		 			obj.date=  new Date(obj.date);
-	                          		            obj.body= obj.body.replace(/<(?:.|\n)*?>/gm, '');
+	                          		 	obj.body= obj.body.replace(/<(?:.|\n)*?>/gm, '');
+	                          		 	var timeNdate =  new Date(Number(obj.date));
+	                          		 	obj.date = timeNdate;
+
 	                          		});
 
-		                          		obj.blogs = postsArr;
-		                          		obj.title ='Work In Progress, Learning Blog'
-	                          	    reply.view('index', obj);
+		                          		allBlogs.blogs = postsArr;
+		                          		allBlogs.title ='Work In Progress, Learning Blog'
+	                          	    reply.view('index', allBlogs);
 
                           	                          	    	
                           	    
