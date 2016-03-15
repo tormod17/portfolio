@@ -5,19 +5,57 @@
 	<title>Blog</title>
 	<script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
 	<link rel="stylesheet" type="text/css" id="u0" href="https://cdn.tinymce.com/4/skins/lightgray/skin.min.css">
+  <script>UPLOADCARE_PUBLIC_KEY = "demopublickey";</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" charset="utf-8"></script>
+<script src="https://ucarecdn.com/widget/2.6.0/uploadcare/uploadcare.min.js" charset="utf-8"></script>
 
 </head>
 <body>
 
 
 
-<h1>Blog {{title}}</h1>
-<form method="post" id="form">
+<h1>Blog {{title}} {{name}}</h1>
+<form method="post" action="/redis" id="form">
     <input type="text" placeholder="Title" name="title" required>
     
     <textarea id="tiny" form="form" name="body">Hello World</textarea>
     <button type="submit" value="decode" id='button'>SUBMIT</button>
   </form>
+ <br>
+ <form method="POST" action="/redis/delete">
+ 	<input type="text" name="post_name">
+ 	<button type="submit">Remove</button>
+ </form>
+ <br>
+ <form action="/upload" enctype="multipart/form-data" method="POST">
+   	<input type="file" name="file" multiple="multiple"><br>
+  	<input type="submit" value="Upload">
+ </form>
+
+ <a href="/lib/uploads/TormodCV.docx" download><output>Download</output></a>
+
+ <br>
+</br>
+
+
+<form method="POST" action="/uploadcare">
+  <input type="hidden" role="uploadcare-uploader" name="my_file" />
+  <button type="submit" id="uploadcareButton">Submit</button>
+</form>
+
+<br>
+</br>
+<div>
+  <a href={{download}}  download>{{download}}</a>
+</div>
+
 </body>
+
 <script src="./assets/js/blog.js" ></script>
+
+
+
+
+</script>
+
 </html>

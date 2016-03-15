@@ -3,7 +3,7 @@
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
 <head>
-    <title>Tormod Smith Portfoliio-Site</title>
+    <title>Tormod Smith Portfolio-Site</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -54,7 +54,7 @@
             </div><!--//profile-->
             <ul class="list-inline pull-right">
                 <li><a class="btn btn-cta-primary pull-right" href="mailto:tormodsmith@gmail.com" target="_blank"><i class="fa fa-paper-plane"></i>Contact Me </a> </li>
-                <li><a class="btn btn-cta-primary pull-right" href="blog" target="_blank"><i class="fa fa-paper-plane"></i>Blog</a> 
+                <li><a class="btn btn-cta-primary pull-right" href="blogLogin" target="_blank"><i class="fa fa-paper-plane"></i>Blog</a> 
                 </li>
             </ul>
            
@@ -317,7 +317,7 @@
                            {{#each blogs}}
                            <li><h3>{{this.title}}</h3></li>
                            <li>{{this.date}}</li>
-                           <li>{{this.body}}</li>
+                           <li>{{{this.body}}}</li>
                            <li><b>By: </b> {{ this.author}}</li>
 
                            {{/each}}
