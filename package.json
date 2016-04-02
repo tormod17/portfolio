@@ -10,7 +10,8 @@
     "test": "tape ./tests/*",
     "start": "nodemon server.js",
     "sass": "sass --watch public/scss/style.scss:public/style.css",
-    "coverage": "istanbul cover tape ./tests/* && ./node_modules/.bin/codecov"
+    "coverage": "istanbul cover tape ./tests/* && ./node_modules/.bin/codecov",
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,10 @@
   },
   "homepage": "https://github.com/CoffeeDotFilter/blog#readme",
   "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-eslint": "^6.0.0",
+    "eslint": "^2.5.1",
+    "eslint-plugin-react": "^4.2.3",
     "istanbul": "^0.4.2",
     "nodemon": "^1.9.1",
     "tape": "^4.4.0"

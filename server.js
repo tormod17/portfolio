@@ -1,11 +1,12 @@
-"Use strict";
+'Use strict';
+
 
 const Hapi = require('hapi');
 const server = new Hapi.Server();
 const port = process.env.PORT || 3000;
 
 const Inert = require('inert');
-const Path = require('path');
+require('path');
 const Vision = require('vision');
 const Handlebars = require('handlebars');
 
@@ -13,9 +14,9 @@ const redis = require('./lib/redis.js');
 
 const Login = require('hapi-login');
 
-
+/*
 const Bcrypt = require('bcrypt');
-const Joi = require('joi');
+const Joi = require('joi');*/
 
 
 var custom_fields = require('./lib/custom_fields');
@@ -37,7 +38,7 @@ var opts = {
 var HapiLogin = {
     register: Login,
     options: opts
-}
+};
 
 
 server.connection({
@@ -52,7 +53,7 @@ const plugins = [
 
 server.register(plugins, (err) => {
 
-            if (err) console.log(err);
+            if (err) console.error(err);
 
             server.views({
                 engines: { html: Handlebars },
@@ -78,7 +79,7 @@ server.register(plugins, (err) => {
 
                                 });
                                 allBlogs.blogs = postsArr;
-                                allBlogs.title = 'Work In Progress, Learning Blog'
+                                allBlogs.title = 'Work In Progress, Learning Blog';
                                 reply.view('index', allBlogs);
 
                             });
