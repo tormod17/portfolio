@@ -518,6 +518,25 @@ iframe {
 .footer .fa-heart {
   color: #fb866a;
 }
+
+/* Login page */
+.main {
+  position: relative;
+  background-color: white;
+}
+.samuri {
+  width:80%;
+  max-height: 60em;
+}
+.login-form {
+  position: absolute;
+  top: 20%;
+  left:20%;
+
+}
+
+
+
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: 767px) {
   .header {
