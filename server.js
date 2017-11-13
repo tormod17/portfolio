@@ -1,6 +1,5 @@
 'Use strict';
 
-
 const Hapi = require('hapi');
 const server = new Hapi.Server();
 const port = process.env.PORT || 3000;
@@ -59,8 +58,6 @@ server.register(plugins, (err) => {
                 engines: { html: Handlebars },
                 relativeTo: __dirname,
                 path: 'public'
-
-
             });
 
             server.route([{
