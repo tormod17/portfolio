@@ -131,6 +131,7 @@ iframe {
     width : 105px;
     margin-top: 30px;
  }
+
 .header .profile-content .name {
   color: #49515a;
   font-size: 38px;
@@ -299,6 +300,11 @@ iframe {
   color: #5f6b77;
 }
 /* Work Section */
+
+.wrk-logo {
+  height: 50px;
+}
+
 .experience .item {
   margin-bottom: 30px;
 }
