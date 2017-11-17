@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <title>Coding Blog</title>
+    <link href="/assets/css/styles.css" rel="stylesheet">
+    <link href="/assets/css/firebaseReact.css" rel="stylesheet">
+    <style>
+      .btn,
+      button {
+        display: none;
+      }
+    </style>
+
+</head>
+
+<body>
+    <a class="goBack" href="/">
+      <svg class="goBack" viewBox="0 0 100 100" preserveAspectRatio="none">    
+        <path d="M10,30 50,80 90,30"></path>  
+      </svg>
+    </a>
+    <div id="root"></div>
+    <script type="text/javascript" src="/assets/js/firebaseReact.js"></script>
+    <div id="disableButtonHack" hidden>{{name}}</div>
+    <script>
+      function showButtons() {
+        var key = document.getElementById('disableButtonHack').innerHTML;
+        console.log(key);
+        if (key !== 'friend') {
+          var nodes = document.getElementsByTagName('button');
+          var buttons  = Array.prototype.slice.call(nodes);
+          buttons.forEach(function(button){button.style.display = 'inline-block';});
+        }
+      }
+      setTimeout(showButtons, 2000);
+    </script>
+</body>
+
+</html>

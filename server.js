@@ -25,14 +25,11 @@ const addPost_handler = require('./lib/addPost_handler.js');
 const upload_handler = require('./lib/upload_handler');
 const uploadcare_handler =require('./lib/uploadcare_handler.js');
 
-
-
 var opts = {
     fields: custom_fields,
     handler: login_handler,
     fail_action_handler: login_handler
 };
-
 
 var HapiLogin = {
     register: Login,
@@ -64,8 +61,6 @@ server.register(plugins, (err) => {
                         method: 'GET',
                         path: '/',
                         handler: (request, reply) => {
-
-
                             redis.getAllHashes('sortedPosts', (postsArr) => {
                                 console.log('GAH', postsArr.length);
                                 var allBlogs = {};
@@ -108,7 +103,7 @@ server.register(plugins, (err) => {
                         }
 
                     }, {
-                        method: 'POST',
+                        method: ['POST','GET'],
                         path: '/blogpage',
                         handler: login_handler
 
