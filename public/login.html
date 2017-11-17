@@ -11,22 +11,11 @@
 <body>
     <div class="main">
         <img class="samuri" src="http://conceptartworld.com/wp-content/uploads/2016/01/Samurai_Concept_Art_Illustration_01_Bjorn_Hurri.jpg">
-        <div class="login-form">
-            <form class="form" class="text-center" method="POST" action="/blogpage">
-                <div class="form-group">
-                    <input placeholder="email" class="form-control"  name="username" required>
-                </div>
-                <div class="form-group">
-                    <input placeholder="password" class="form-control"  name="password" required>
-                </div>
-                <button class="btn btn-success btn-sm"type="submit" id="button">Admin Enter</button>
-            </form>
-            <div class="everyone">
-                <a href="blogpage">
-                    <span>everyone enter</span>
-                </a>
-            </div>
-        </div>
+        <form class="login-form" class="text-center" method="POST" action="/blogpage">
+            <input placeholder="email" name="email" required>
+            <input placeholder="password" name="password" required>
+            <button type="submit" id="button">Login</button>
+        </form>
     </div>
 </body>
 

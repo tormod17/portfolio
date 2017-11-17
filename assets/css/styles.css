@@ -527,57 +527,10 @@ a.dotted-link:hover {
   position: absolute;
   top: 20%;
   left:20%;
-}
-
-.login-form form {
-  margin: 1em;
-}
-
-.everyone {
-  width: 30%;
-  height: 50px;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  text-align: center;
-  text-decoration: none;
-  font-size: 2em;
-  background: #337ab7;
-  border-radius: 10px;
-}
-
-.everyone a {
-  text-decoration: none;
-}
-
-.everyone:hover {
-  background: #439ab8; 
-}
-
-.everyone span {
-  height: 25px;
-  line-height: 25px;
-  color: white;
 
 }
 
-.goBack {
-  position: fixed;
-  right: 5em;
-  top: 2em;
-}
 
-.goBack svg {
-  width: 40px;
-  height: 40px;
-  transform: rotate(90deg);
-  fill: none;
-  stroke: black;
-  stroke-width: 8px;
-}
 
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: 767px) {
