@@ -10,7 +10,7 @@
     "test": "tape ./tests/*",
     "start": "nodemon server.js",
     "babel": "babel --presets es2015 js/main.js -o build/main.bundle.js",
-    "build": "react-scripts build",
+    "build": "babel portfolio/*.js -d dist",
     "dev-webpack": "webpack-dev-server",
     "webpack": "webpack --watch",
     "sass": "sass --watch public/scss/style.scss:public/style.css",

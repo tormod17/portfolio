@@ -9,8 +9,6 @@ require('path');
 const Vision = require('vision');
 const Handlebars = require('handlebars');
 
-const redis = require('./lib/redis.js');
-
 const Login = require('hapi-login');
 
 var custom_fields = require('./lib/custom_fields');
