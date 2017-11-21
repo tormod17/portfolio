@@ -13,21 +13,17 @@ const redis = require('./lib/redis.js');
 
 const Login = require('hapi-login');
 
-/*
-const Bcrypt = require('bcrypt');
-const Joi = require('joi');*/
-
-
 var custom_fields = require('./lib/custom_fields');
 
 const login_handler = require('./lib/login_handler.js');
-const addPost_handler = require('./lib/addPost_handler.js');
+const signup_handler = require('./lib/signup_handler.js');
+const redis_handler = require('./lib/redis_handler.js');
+const blog_handler = require('./lib/blog_handler.js');
 const upload_handler = require('./lib/upload_handler');
 const uploadcare_handler =require('./lib/uploadcare_handler.js');
+const home_handler = require('./lib/home_handler.js');
 
-
-
-var opts = {
+var options = {
     fields: custom_fields,
     handler: login_handler,
     fail_action_handler: login_handler
@@ -36,13 +32,10 @@ var opts = {
 
 var HapiLogin = {
     register: Login,
-    options: opts
+    options
 };
 
-
-server.connection({
-    port: port
-});
+server.connection({ port });
 
 const plugins = [
     Inert,
@@ -57,30 +50,13 @@ server.register(plugins, (err) => {
             server.views({
                 engines: { html: Handlebars },
                 relativeTo: __dirname,
-                path: 'public'
+                path: 'views'
             });
 
             server.route([{
                         method: 'GET',
                         path: '/',
-                        handler: (request, reply) => {
-
-
-                            redis.getAllHashes('sortedPosts', (postsArr) => {
-                                console.log('GAH', postsArr.length);
-                                var allBlogs = {};
-                                postsArr.reverse().map((obj) => {
-                                    obj.body = obj.body;
-                                    var timeNdate = new Date(Number(obj.date));
-                                    obj.date = timeNdate;
-
-                                });
-                                allBlogs.blogs = postsArr;
-                                allBlogs.title = 'Work In Progress, Learning Blog';
-                                reply.view('index', allBlogs);
-
-                            });
-                        }
+                        handler: home_handler
                     }, {
                         method: 'GET',
                         path: '/assets/{params*}',
@@ -103,40 +79,33 @@ server.register(plugins, (err) => {
                     {
                         method: 'GET',
                         path: '/blogLogin',
-                        handler: (request, reply) => {
-                            reply.view('login');
-                        }
-
+                        handler: (request, reply) => reply.view('login')
                     }, {
-                        method: 'POST',
+                        method: ['POST', 'GET'],
                         path: '/blogpage',
                         handler: login_handler
 
-                    }, {
+                    },{
+                        method: ['POST', 'GET'],
+                        path: '/blogger/{params*}',
+                        handler: blog_handler
+
+                    },{
                         method: 'POST',
-                        path: '/redis',
-                        handler: addPost_handler
+                        path: '/signup',
+                        handler: signup_handler
+
                     }, {
-                        method: 'POST',
-                        path: '/redis/delete',
-                        handler: (request, reply) => {
-                            console.log('DEL', request.payload.post_name);
-                            redis.removePostFromList('sortedPosts', request.payload.post_name);
-                            redis.getFile('new-file');
-                            reply.view('blog', {
-                                title: 'Let\'s write',
-                                name: 'friend'
-                            });
-                        }
-                    },
-                    {
+                        method: ['POST', 'GET'],
+                        path: '/redis/{params*}',
+                        handler: redis_handler
+                    }, {
                         method: 'POST',
                         path: '/uploadcare',
                         handler: uploadcare_handler
                     },
 
                     {
-
                         method: 'POST',
                         path: '/upload',
                         config: {
@@ -144,8 +113,7 @@ server.register(plugins, (err) => {
                                 maxBytes: 209715200,
                                 output: 'stream',
                                 parse: true,
-                                allow:'multipart/form-data'
-                            	}
+                                allow:'multipart/form-data'                          	}
                             },
                         handler: upload_handler
                     }
