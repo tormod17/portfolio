@@ -45,7 +45,7 @@ module.exports = {
       }
     },{ 
       test: /\.(png|woff|woff2|eot|ttf|svg|jpg|jpeg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-      loader: 'url-loader?limit=100000' 
+      loader: 'url?limit=100000' 
     },{
       test: /\.css$/,  
       exclude: /node_modules/,  
