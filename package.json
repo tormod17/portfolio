@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/CoffeeDotFilter/blog#readme",
   "devDependencies": {
-    "babel": "^6.5.2",
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^6.0.0",
     "codemirror": "^5.31.0",
     "css-loader": "^0.28.7",

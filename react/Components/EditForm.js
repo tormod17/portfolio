@@ -35,7 +35,7 @@ class EditForm extends PureComponent {
     const state = { ...this.state };
     const { id, closeForm } = this.props;
 
-    const cleanState = Object.keys(state).reduce((p,c) => {
+    const cleanState = Object.keys(this.state).reduce((p,c) => {
       if (state[c] !== '') {
         p[c] = state[c];
       }
