@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import AddForm from './AddForm';
 import EditForm from './EditForm';
+import LoginForm from './LoginForm';
+
 import '../css/index.css';
 
 const today = new Date().toISOString().slice(0, 10);
@@ -29,7 +31,7 @@ class Form extends Component {
   }
 
   render() {
-    const { closeForm, editingPost, editingId } = this.props;
+    const { closeForm, editingPost, editingId, login } = this.props;
  
     return (
       <div 
@@ -62,9 +64,14 @@ class Form extends Component {
               />
 
             }
-            {!editingPost && 
+            {!editingPost && !login &&
               <AddForm 
                 closeForm={closeForm}
+              />
+            }
+            { login &&
+              <LoginForm
+                closeForm={closeForm}              
               />
             }
           </div>

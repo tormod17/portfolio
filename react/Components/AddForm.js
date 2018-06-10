@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Editor from './Editor';
+import TextEditor from './TextEditor';
 
 const today = new Date().toISOString().slice(0, 10)
 
@@ -32,7 +32,7 @@ class AddForm extends Component {
   handleEditorChange = (e, name) => {
     this.setState(prevState=> ({
       ...prevState,
-      [name]: e.target.innerHTML,
+      [name]: e.target.getContent(),
     }))
   }
 
@@ -51,7 +51,7 @@ class AddForm extends Component {
     const { closeForm, editingPost } = this.props;
 
     return (
-        <form className="form-horizontal" onSubmit={this.addPost}>     
+        <form className="form-horizontal" onSubmit={this.addPost}>   
           <div className="form-group">
             <label htmlFor="title">Title</label>
             <input 
@@ -64,7 +64,7 @@ class AddForm extends Component {
             />
           </div>
           <div className="form-group">
-            <Editor
+            <TextEditor
               handleChange={e => this.handleEditorChange(e,'editor')}
             />
           </div>

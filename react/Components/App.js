@@ -3,35 +3,35 @@ import { CSSTransitionGroup } from 'react-transition-group';
 import logo from '../logo.svg';
 import '../css/App.css';
 import Header from './Header';
-import Posts from './Posts';
 import Menu from './Menu';
+import Posts from './Posts';
 import Form from './Form';
+import LoginForm from './LoginForm';
 
 class App extends Component {
   
   constructor(props){
     super(props);
     this.state = {
-      showForm: false
+      showHideForm: false,
+      login: false,
     };
-    this.isAdmin = window.location.href.includes('editing1234');
+    this.isAdmin = window.location.href.includes('editing');
+    this.showHideLoginForm = this.showHideLoginForm.bind(this);
     this.showHideForm = this.showHideForm.bind(this);
-    this.editForm = this.editForm.bind(this);
     this.getAllPosts = this.getAllPosts.bind(this);
+    this.editForm = this.editForm.bind(this);
   }
 
   componentWillMount() {    
     this.getAllPosts();
-
   }
 
   componentDidMount() {
     document.addEventListener('posts', this.getAllPosts);
-
   }
 
   getAllPosts() {
-    console.log('getposts');
     fetch('/redis/posts')
     .then(res => { 
       return res.json();
@@ -44,29 +44,40 @@ class App extends Component {
     });
   }
 
+  showHideLoginForm(){
+    this.setState({
+       login: !this.state.login,
+       showHideForm: !this.state.showHideForm,
+       editingId: ''
+    });
+  }
+
   editForm(key) {
     this.showHideForm();
     this.setState({
-      editingId: key
+      editingId: key,
     });
   }
 
   showHideForm() {
     this.setState({
-      showForm: !this.state.showForm,
+      showHideForm: !this.state.showHideForm,
+      login: false,
       editingId: ''
     });
   }
   
   render() {
-    const { showForm, posts, editingId } = this.state;
-
+    const { showHideForm, posts, editingId, login } = this.state;
+    
     return (
       <div 
         className="App pageWrapper"
         ref={(div)=> this.App = div}
       >
-        <Header />
+        <Header 
+          showHideLoginForm={this.showHideLoginForm} 
+        />
         <div className="row">
           <div className="col-xs-6 col-sm-10 center">
             <div className="">
@@ -99,8 +110,8 @@ class App extends Component {
                 posts={posts}
               />
             </div>
-        </div>
-        { showForm &&
+        </div>  
+        { showHideForm &&
           <CSSTransitionGroup
             transitionName="formTrans"
             transitionAppear={true}
@@ -110,8 +121,9 @@ class App extends Component {
           >
             <Form 
               closeForm={this.showHideForm}
-              editingPost={posts && posts[editingId]}
+              editingPost={posts && !login && posts[editingId] }
               editingId={editingId}
+              login={login}
             />
           </CSSTransitionGroup>
         }

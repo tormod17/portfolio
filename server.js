@@ -79,8 +79,8 @@ server.register(plugins, (err) => {
                         path: '/blogLogin',
                         handler: (request, reply) => reply.view('login')
                     }, {
-                        method: ['POST', 'GET'],
-                        path: '/blogpage',
+                        method: ['POST'],
+                        path: '/login',
                         handler: login_handler
 
                     },{
@@ -111,8 +111,9 @@ server.register(plugins, (err) => {
                                 maxBytes: 209715200,
                                 output: 'stream',
                                 parse: true,
-                                allow:'multipart/form-data'                          	}
-                            },
+                                allow:'multipart/form-data'                          	
+                            }
+                        },
                         handler: upload_handler
                     }
 

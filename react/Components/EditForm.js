@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import Trumbowyg from 'react-trumbowyg';
-import Editor from './Editor';
+import TextEditor from './TextEditor';
 import '../css/index.css';
 
 class EditForm extends PureComponent {
@@ -26,7 +26,7 @@ class EditForm extends PureComponent {
   handleEditorChange = e => {
     this.setState(prevState=> ({
       ...prevState,
-      editor: e.target.innerHTML,
+      editor: e.target.getContent(),
     }))
   }
 
@@ -69,7 +69,7 @@ class EditForm extends PureComponent {
               />
           </div>
           <div className="form-group">        
-            <Editor
+            <TextEditor
               name="editor" 
               data={editor}
               handleChange={this.handleEditorChange}
