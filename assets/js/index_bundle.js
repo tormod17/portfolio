@@ -12356,10 +12356,10 @@ var TextEditor = function (_PureComponent) {
     value: function render() {
 
       return _react2.default.createElement(_tinymceReact.Editor, {
-        value: this.props.data,
+        initialValue: this.props.data,
         init: {
-          plugins: 'link image code',
-          toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
+          plugins: 'link image lists code fullscreen',
+          toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | numlist bullist | code| fullscreen'
         },
         onChange: this.props.handleChange
       });
